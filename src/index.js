@@ -1,17 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import NotExistFile from './FrontOffice/NavBar/404';
+// import NotExistFile from './Components/404';
+
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { App } from './App';
+import { index_back } from './BackOffice/index_back';
+import { index_front } from './FrontOffice/index_front';
+
+
+
+// ReactDOM.render(<App />,document.getElementById('root'));
+
+const rootElement = document.getElementById('root');
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+<BrowserRouter>
+<Switch>
+    <Route exact path="/" component={index_back} />
+    <Route exact path="/user" component={index_back} />
+    <Route path="/admin" component={index_front} />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+    
+
+    {/* <Route path="/admin" component={App} /> */}
+    {/* <Route component={NotExistFile} /> */}
+</Switch>
+</BrowserRouter>, rootElement);
+
+
